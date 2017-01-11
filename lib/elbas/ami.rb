@@ -24,7 +24,7 @@ module Elbas
       images.each do |i|
         info "Deleting old AMI: #{i.id}"
         snapshots = snapshots_attached_to i
-        i.delete
+        i.delete rescue Exception
         delete_snapshots snapshots
       end
     end
